@@ -8,14 +8,23 @@ function generateTarget(){
 }
 
 function compareGuesses(currentHumanGuess, computerGuess, target) {
-    let HumanPlayerValue = Math.abs(target-currentHumanGuess);
-    let computerPlayerValue = Math.abs(target-computerGuess);
+
+    if (currentHumanGuess > 9 || currentHumanGuess < 0) {
+        alert('Number is out of range!');
+    }
+    
+    let HumanPlayerValue = getAbsoluteDistance(target, currentHumanGuess)
+    let computerPlayerValue = getAbsoluteDistance(target, computerGuess)
 
     if(HumanPlayerValue <= computerPlayerValue){
         return true;
     } else {
         return false;
     }
+}
+
+function getAbsoluteDistance(target, numberGuessed){
+    return Math.abs(target-numberGuessed);
 }
 
 function updateScore(winner){
